@@ -43,13 +43,7 @@ $(window).resize(function(){
 });
 
 
-
-
-
-
-
 function main() {
-	
 	
 	/*====================================
     counter
@@ -57,32 +51,34 @@ function main() {
 
 (function(e){"use strict";e.fn.counterUp=function(t){var n=e.extend({time:400,delay:10},t);return this.each(function(){var t=e(this),r=n,i=function(){var e=[],n=r.time/r.delay,i=t.text(),s=/[0-9]+,[0-9]+/.test(i);i=i.replace(/,/g,"");var o=/^[0-9]+$/.test(i),u=/^[0-9]+\.[0-9]+$/.test(i),a=u?(i.split(".")[1]||[]).length:0;for(var f=n;f>=1;f--){var l=parseInt(i/n*f);u&&(l=parseFloat(i/n*f).toFixed(a));if(s)while(/(\d+)(\d{3})/.test(l.toString()))l=l.toString().replace(/(\d+)(\d{3})/,"");e.unshift(l)}t.data("counterup-nums",e);t.text("0");var c=function(){t.text(t.data("counterup-nums").shift());if(t.data("counterup-nums").length)setTimeout(t.data("counterup-func"),r.delay);else{delete t.data("counterup-nums");t.data("counterup-nums",null);t.data("counterup-func",null)}};t.data("counterup-func",c);setTimeout(t.data("counterup-func"),r.delay)};t.waypoint(i,{offset:"100%",triggerOnce:!0})})}})(jQuery);
 
-	
-
 (function () {
    'use strict';
 
 
-
-
-
 $(window).resize(function(){
 
-    $('#home-banner .content,.entry-header .content').css({
+    $('#home-banner .content,.entry-header .content, #home-banner-second .content').css({
         position:'relative',
-        left: ($(window).width() - $('#home-banner .content,.entry-header .content').outerWidth())/2,
-        top: ($(window).height() - $('#home-banner .content,.entry-header .content ').outerHeight())/2
+        left: ($(window).width() - $('#home-banner .content,.entry-header .content, #home-banner-second .content').outerWidth())/2,
+        top: ($(window).height() - $('#home-banner .content,.entry-header .content, #home-banner-second .content ').outerHeight())/2
+    });
+	
+	    $('#home-banner-third .content').css({
+        position:'relative',
+
+        top: ($(window).height() - $(' #home-banner-third .content ').outerHeight())/5
+    });
+	
+	 $('#home-banner-four .content').css({
+        position:'relative',
+
+        top: ($(window).height() - $(' #home-banner-four .content ').outerHeight())/3
     });
 
 });
 
 // To initially run the function:
 $(window).resize();
-
-
-
-
-
 
 
     /*====================================
@@ -102,25 +98,13 @@ $(window).resize();
         offset: 10
     })
 
-  	
-  
-
-
 	/*====================================
     top -menu
     ======================================*/
 
 $('#top-menu.navbar-default li:has(ul)').addClass('menu-item-has-children');
 
-
-
 $('#home-banner h1 span').addClass('liner');
-
-
-
-
-
-
 
 /*creating click event*/
 $(document).ready(function(){
@@ -137,7 +121,6 @@ $(document).ready(function(){
   
 });
 
-
 /*nav-icon*/
 $(document).ready(function(){
 	$('#nav-icon').click(function(){
@@ -148,6 +131,29 @@ $(document).ready(function(){
 $('.guide-block .nav-tabs > li > a').hover(function() {
   $(this).tab('show');
 });
+
+$(document).ready(function() {
+  	  $("#team, #Clients").owlCarousel({
+  	 
+  	      navigation : false, // Show next and prev buttons
+  	      slideSpeed : 300,
+  	      paginationSpeed : 400,
+  	      autoHeight : true,
+		   autoPlay: 3000, //Set AutoPlay to 3 seconds
+		   
+  	      itemsCustom : [
+				        [0, 1],
+				        [450, 2],
+				        [600, 2],
+				        [700, 2],
+				        [1000, 4],
+				        [1200, 4],
+				        [1400, 4],
+				        [1600, 4]
+				      ],
+  	  }); 
+
+  	});
 
   	/*====================================
     Portfolio Isotope Filter
@@ -178,8 +184,6 @@ $('.guide-block .nav-tabs > li > a').hover(function() {
         });
 
     });
-
-
 
 }());
 
